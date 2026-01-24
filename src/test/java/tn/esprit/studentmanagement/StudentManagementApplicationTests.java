@@ -29,11 +29,11 @@ class DepartmentControllerTest {
     void testGetAllDepartments() {
         // Arrange
         Department dep1 = new Department();
-        dep1.setId(1L);
+        dep1.setIdDepartment(1L);
         dep1.setName("Informatique");
 
         Department dep2 = new Department();
-        dep2.setId(2L);
+        dep2.setIdDepartment(2L);
         dep2.setName("Électrique");
 
         when(departmentService.getAllDepartments()).thenReturn(Arrays.asList(dep1, dep2));
