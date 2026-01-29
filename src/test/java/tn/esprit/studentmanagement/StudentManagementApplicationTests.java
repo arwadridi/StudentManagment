@@ -1,12 +1,13 @@
 package tn.esprit.studentmanagement.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.studentmanagement.entities.Department;
 import tn.esprit.studentmanagement.services.IDepartmentService;
-import org.junit.jupiter.api.extension.ExtendWith;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,13 +23,8 @@ class DepartmentControllerTest {
     @InjectMocks
     private DepartmentController departmentController;
 
-    public DepartmentControllerTest() {
-        MockitoAnnotations.openMocks(this);
-    }
-
     @Test
     void testGetAllDepartments() {
-        // Arrange
         Department dep1 = new Department();
         dep1.setIdDepartment(1L);
         dep1.setName("Informatique");
@@ -39,10 +35,8 @@ class DepartmentControllerTest {
 
         when(departmentService.getAllDepartments()).thenReturn(Arrays.asList(dep1, dep2));
 
-        // Act
         List<Department> result = departmentController.getAllDepartment();
 
-        // Assert
         assertEquals(2, result.size());
         assertEquals("Informatique", result.get(0).getName());
         verify(departmentService, times(1)).getAllDepartments();
@@ -50,16 +44,13 @@ class DepartmentControllerTest {
 
     @Test
     void testCreateDepartment() {
-        // Arrange
         Department dep = new Department();
         dep.setName("Mécanique");
 
         when(departmentService.saveDepartment(dep)).thenReturn(dep);
 
-        // Act
         Department result = departmentController.createDepartment(dep);
 
-        // Assert
         assertEquals("Mécanique", result.getName());
         verify(departmentService, times(1)).saveDepartment(dep);
     }
