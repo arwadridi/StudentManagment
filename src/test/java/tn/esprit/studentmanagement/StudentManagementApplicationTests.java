@@ -6,14 +6,14 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import tn.esprit.studentmanagement.entities.Department;
 import tn.esprit.studentmanagement.services.IDepartmentService;
-
+import org.junit.jupiter.api.extension.ExtendWith;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
+@ExtendWith(MockitoExtension.class)
 class DepartmentControllerTest {
 
     @Mock
